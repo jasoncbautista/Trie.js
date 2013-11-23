@@ -56,9 +56,22 @@ Trie.prototype._insertHelper= function(position, currentNode, word, item){
 }
 
 
+Trie.prototype._getAllSubResultsHelper = function(currentNode ){
+}
 // Here we go through every sub branch to get all the nodes with results
-Trie.prototype._getAllSubResults = function(currentNode ){
+Trie.prototype._getAllSubResults = function(currentNode){
+    var self = this;
+    var resultsCombined = [];
+    // Make sure we add this nodes results:
+    if (currentNode.results.length > 0) {
+        resultsCombined = _.union(resultsCombined, currentNode.results);
+    }
+    _.each( currentNode.children, function(childNode) {
+        var results = self._getAllSubResults(childNode);
+        resultsCombined = _.union( resultsCombined, results);
+    });
 
+    return resultsCombined;
 }
 
 Trie.prototype._lookupHeler = function(currentNode, prefix, position){
