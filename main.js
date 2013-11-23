@@ -95,6 +95,9 @@ Trie.prototype._lookupHeler = function(currentNode, prefix, position){
         // We are done  and now need to get our results
         console.log('done at this node', nextNode);
         return this._getAllSubResults(nextNode);
+    } else {
+        // Otherwise we recurse and keep looking
+        return this._lookupHeler(nextNode, prefix, position);
     }
 
 };
@@ -106,7 +109,7 @@ Trie.prototype.lookup = function(prefix) {
     }
 
 
-    this._lookupHeler(this._head, prefix, 0);
+    return this._lookupHeler(this._head, prefix, 0);
 };
 
 
@@ -119,12 +122,20 @@ Trie.prototype.debug= function(){
 var trie = new Trie();
 
 trie.insert("co", {"word": "co", height: 6});
+trie.insert("aaahh", {"word": "ahh", height: 6});
+trie.insert("cork", {"word": "cork", height: 5});
 trie.insert("col", {"word": "col", height: 5});
+trie.insert("colateral", {"word": "colateral", height: 5});
 trie.debug();
 
-console.log("results", trie.lookup("c"));
+console.log("results c", trie.lookup("c"));
+console.log("results col", trie.lookup("col"));
+console.log("results a", trie.lookup("a"));
+console.log("results cor", trie.lookup("cor"));
 
 
+console.log("results a", trie.lookup("aax"));
+console.log("results a", trie.lookup("b"));
 
 
 
