@@ -130,7 +130,9 @@ trie.debug();
 console.log("results ", trie.lookup("c"));
 console.log("results ", trie.lookup("col"));
 console.log("results ", trie.lookup("a"));
-console.log("results r", trie.lookup("cor"));
+console.log("results ", trie.lookup("cor"));
+console.log("results ", trie.lookup("o"));
+console.log("results ", trie.lookup("ork"));
 
 
 console.log("results ", trie.lookup("aax"));
