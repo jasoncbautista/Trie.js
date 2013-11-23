@@ -8,8 +8,8 @@ var node = {
 
 var Trie =  function(){
     // We initialize our node with an empty
-    this.head = {
-            children: []
+    this._head = {
+            children: {}
         ,   value: ""
         ,   results: []
     };
@@ -23,8 +23,7 @@ Trie.prototype.insert = function(word) {
     }
 
     // Sketchout algo:
-    //
-    var currentNode  = this.head;
+    var currentNode  = this._head;
     var position = 0;
     this._insertHelper(0, currentNode, word);
 };
@@ -32,21 +31,36 @@ Trie.prototype.insert = function(word) {
 Trie.prototype._insertHelper= function(position, currentNode, word){
     console.log('arguments', arguments);
 
-
     var currentLetter = word[position];
+    // Check if the next node exists already
+    var newNextNode = currentNode.children[currentLetter];
+    if ( newNextNode === undefined ) {
+        // Create a new next node with our letter
+        newNextNode = {
+                chilreh: {}
+            ,   value: currentLetter
+            ,   results: []
+        };
+        // Remember to add our new node to the children:
 
-    console.log(currentLetter);
-    // Maybe len -1 ?
-    if (position === word.length) {
+        currentNode.children[currentLetter] = newNextNode;
     }
 
-
-
+    position++;
+    // Maybe len -1 ?
+    if (position === word.length) {
+        // We are done and we can push ourselves to the new next node
+        newNextNode.results.push[word];
+    } else {
+        // Keep Recursing:
+        this._insertHelper(position, newNextNode, word);
+    }
 
 }
 
 Trie.prototype._lookupHeler = function(){
 };
+
 Trie.prototype.lookup = function(prefix) {
     console.log('prefix', prefix);
     if (prefix.length === 0 || prefix == " "){
@@ -57,9 +71,16 @@ Trie.prototype.lookup = function(prefix) {
 };
 
 
+Trie.prototype.debug= function(){
+    console.log(this._head);
+}
 
 // Little tester
 //
 var trie = new Trie();
 
 trie.insert("cool");
+trie.insert("coolio");
+trie.debug();
+
+
