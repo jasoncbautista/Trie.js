@@ -93,7 +93,6 @@ Trie.prototype._lookupHeler = function(currentNode, prefix, position){
     // Maybe len -1 ?
     if (position === prefix.length) {
         // We are done  and now need to get our results
-        console.log('done at this node', nextNode);
         return this._getAllSubResults(nextNode);
     } else {
         // Otherwise we recurse and keep looking
@@ -128,14 +127,14 @@ trie.insert("col", {"word": "col", height: 5});
 trie.insert("colateral", {"word": "colateral", height: 5});
 trie.debug();
 
-console.log("results c", trie.lookup("c"));
-console.log("results col", trie.lookup("col"));
-console.log("results a", trie.lookup("a"));
-console.log("results cor", trie.lookup("cor"));
+console.log("results ", trie.lookup("c"));
+console.log("results ", trie.lookup("col"));
+console.log("results ", trie.lookup("a"));
+console.log("results r", trie.lookup("cor"));
 
 
-console.log("results a", trie.lookup("aax"));
-console.log("results a", trie.lookup("b"));
+console.log("results ", trie.lookup("aax"));
+console.log("results ", trie.lookup("b"));
 
 
 
