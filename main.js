@@ -122,6 +122,7 @@ trie.insert("co", {"word": "co", height: 6});
 trie.insert("col", {"word": "col", height: 5});
 trie.debug();
 
+console.log("results", trie.lookup("c"));
 
 
 
