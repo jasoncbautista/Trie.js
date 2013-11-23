@@ -15,8 +15,7 @@ var Trie =  function(){
     };
 };
 
-Trie.prototype.insert = function(word) {
-    console.log("word", word);
+Trie.prototype.insert = function(word, item) {
     // Make sure we get a real value:
     if (word.length === 0 || word === " "){
         return;
@@ -28,8 +27,7 @@ Trie.prototype.insert = function(word) {
     this._insertHelper(0, currentNode, word);
 };
 
-Trie.prototype._insertHelper= function(position, currentNode, word){
-    console.log('arguments', arguments);
+Trie.prototype._insertHelper= function(position, currentNode, word, item){
 
     var currentLetter = word[position];
     // Check if the next node exists already
@@ -37,12 +35,11 @@ Trie.prototype._insertHelper= function(position, currentNode, word){
     if ( newNextNode === undefined ) {
         // Create a new next node with our letter
         newNextNode = {
-                chilreh: {}
+                children: {}
             ,   value: currentLetter
             ,   results: []
         };
         // Remember to add our new node to the children:
-
         currentNode.children[currentLetter] = newNextNode;
     }
 
@@ -50,10 +47,10 @@ Trie.prototype._insertHelper= function(position, currentNode, word){
     // Maybe len -1 ?
     if (position === word.length) {
         // We are done and we can push ourselves to the new next node
-        newNextNode.results.push[word];
+        newNextNode.results.push(item);
     } else {
         // Keep Recursing:
-        this._insertHelper(position, newNextNode, word);
+        this._insertHelper(position, newNextNode, word, item);
     }
 
 }
@@ -79,8 +76,8 @@ Trie.prototype.debug= function(){
 //
 var trie = new Trie();
 
-trie.insert("cool");
-trie.insert("coolio");
+trie.insert("co", {"word": "co", height: 6});
+trie.insert("col", {"word": "col", height: 5});
 trie.debug();
 
 
