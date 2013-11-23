@@ -55,7 +55,35 @@ Trie.prototype._insertHelper= function(position, currentNode, word, item){
 
 }
 
-Trie.prototype._lookupHeler = function(){
+
+// Here we go through every sub branch to get all the nodes with results
+Trie.prototype._getAllSubResults = function(currentNode ){
+
+}
+
+Trie.prototype._lookupHeler = function(currentNode, prefix, position){
+    // First we look and see if the next letter in our prefix is a child
+    // of the currentNode
+
+    // So first we get our current letter:
+    var currentLetter = prefix[position];
+    // Now we check to see if our prefix exists:
+
+    var nextNode = currentNode.children[currentLetter];
+    if (nextNode   === undefined) {
+        return []; // We don't have any results since we dont exist in the trie
+    }
+
+
+    // Next we continue to see if we have reached the end of our
+    position++;
+    // Maybe len -1 ?
+    if (position === prefix.length) {
+        // We are done  and now need to get our results
+        console.log('done at this node', nextNode);
+        return this._getAllSubResults(nextNode);
+    }
+
 };
 
 Trie.prototype.lookup = function(prefix) {
@@ -64,7 +92,8 @@ Trie.prototype.lookup = function(prefix) {
         return [];
     }
 
-    return [];
+
+    this._lookupHeler(this._head, prefix, 0);
 };
 
 
@@ -79,5 +108,9 @@ var trie = new Trie();
 trie.insert("co", {"word": "co", height: 6});
 trie.insert("col", {"word": "col", height: 5});
 trie.debug();
+
+
+
+
 
 
