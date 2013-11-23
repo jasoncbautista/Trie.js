@@ -24,7 +24,7 @@ Trie.prototype.insert = function(word, item) {
     // Sketchout algo:
     var currentNode  = this._head;
     var position = 0;
-    this._insertHelper(0, currentNode, word);
+    this._insertHelper(0, currentNode, word, item);
 };
 
 Trie.prototype._insertHelper= function(position, currentNode, word, item){
