@@ -26,11 +26,14 @@ console.log("results ", trie.lookup("o"));
 $(document).ready(function(){
     var searchBox = $("#searchBox");
     searchBox.keyup(function(e) {
-        var searchTerm = searchTem.val();
-        searchTem = searchTerm.trim();
+        var searchTerm = searchBox.val();
+        searchTerm = searchTerm.trim();
         if (searchTerm.length > 0) {
             var results = trie.lookup(searchTerm.toLowerCase());
-            console.log(results);
+            _.each(results, function(result) {
+                console.log(result);
+            });
+
         }
     });
 
