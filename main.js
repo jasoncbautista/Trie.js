@@ -39,8 +39,8 @@ $(document).ready(function(){
 
     };
 
-    var results = trie.getAllResults();
-    render(results, resultsContainer);
+    // var results = trie.getAllResults();
+    // render(results, resultsContainer);
 
     searchBox.keyup(function(e) {
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
             results = trie.lookup(searchTerm.toLowerCase());
 
         } else {
-            results = trie.getAllResults();
+            // results = trie.getAllResults();
         }
 
         render(results, resultsContainer);
