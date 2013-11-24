@@ -25,13 +25,18 @@ console.log("results ", trie.lookup("o"));
 
 $(document).ready(function(){
     var searchBox = $("#searchBox");
+    var resultsContainer = $("#autoSuggestResults");
     searchBox.keyup(function(e) {
+
+        resultsContainer.empty();
         var searchTerm = searchBox.val();
         searchTerm = searchTerm.trim();
         if (searchTerm.length > 0) {
             var results = trie.lookup(searchTerm.toLowerCase());
             _.each(results, function(result) {
-                console.log(result);
+                var dom = $("<div>" + result.full_name + "</div>");
+                console.log(dom.html());
+                resultsContainer.append(dom);
             });
 
         }
