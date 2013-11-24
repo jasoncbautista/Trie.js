@@ -120,23 +120,17 @@ Trie.prototype.debug= function(){
 //
 var trie = new Trie();
 
-trie.insert("co", {"word": "co", height: 6});
-trie.insert("aaahh", {"word": "ahh", height: 6});
-trie.insert("cork", {"word": "cork", height: 5});
-trie.insert("col", {"word": "col", height: 5});
-trie.insert("colateral", {"word": "colateral", height: 5});
-trie.debug();
+_.each(fullList.fighters, function(fighter) {
+    // Insert firt name:
+    fighter.ful_name = fighter.first_name + " " + fighter.last_name;
 
-console.log("results ", trie.lookup("c"));
-console.log("results ", trie.lookup("col"));
-console.log("results ", trie.lookup("a"));
-console.log("results ", trie.lookup("cor"));
+
+
+trie.insert(fighter.first_name, fighter);
+
+
+});
+
+
 console.log("results ", trie.lookup("o"));
-console.log("results ", trie.lookup("ork"));
-
-
-console.log("results ", trie.lookup("aax"));
-console.log("results ", trie.lookup("b"));
-
-
 
