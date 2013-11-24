@@ -28,7 +28,7 @@ $(document).ready(function(){
     var resultsContainer = $("#autoSuggestResults");
 
 
-    var render = fucntion(results, resultsContainer) {
+    var render = function(results, resultsContainer) {
         resultsContainer.empty();
         // Render our results:
         _.each(results, function(result ) {
@@ -53,7 +53,7 @@ $(document).ready(function(){
             results = trie.getAllResults();
         }
 
-        render(results, resultsContainer):
+        render(results, resultsContainer);
 
     });
 
