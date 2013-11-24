@@ -16,7 +16,7 @@ var Trie =  function(){
 
 Trie.prototype.insert = function(word, item) {
     // Make sure we get a real value:
-    if (word.length === 0 || word === " "){
+    if (word.length === 0){
         return;
     }
 
@@ -99,6 +99,10 @@ Trie.prototype._lookupHeler = function(currentNode, prefix, position){
     }
 
 };
+
+Trie.prototype.getAllResults = function(currentNode){
+   return this._getAllSubResults(this._head);
+}
 
 Trie.prototype.lookup = function(prefix) {
     console.log('prefix', prefix);

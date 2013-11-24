@@ -26,20 +26,35 @@ console.log("results ", trie.lookup("o"));
 $(document).ready(function(){
     var searchBox = $("#searchBox");
     var resultsContainer = $("#autoSuggestResults");
+
+
+    var render = fucntion(results, resultsContainer) {
+        resultsContainer.empty();
+        // Render our results:
+        _.each(results, function(result ) {
+            var dom = $("<div>" + result.full_name + "</div>");
+            console.log(dom.html());
+            resultsContainer.append(dom);
+        });
+
+    };
+
+    var results = trie.getAllResults();
+    render(results, resultsContainer);
+
     searchBox.keyup(function(e) {
 
-        resultsContainer.empty();
         var searchTerm = searchBox.val();
         searchTerm = searchTerm.trim();
         if (searchTerm.length > 0) {
-            var results = trie.lookup(searchTerm.toLowerCase());
-            _.each(results, function(result) {
-                var dom = $("<div>" + result.full_name + "</div>");
-                console.log(dom.html());
-                resultsContainer.append(dom);
-            });
+            results = trie.lookup(searchTerm.toLowerCase());
 
+        } else {
+            results = trie.getAllResults();
         }
+
+        render(results, resultsContainer):
+
     });
 
 });
