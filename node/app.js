@@ -199,8 +199,8 @@ app.get('/quote/:query', function(req, res) {
 	} else {
 	     results = [];
 	}
-
-	var resultsObj = {"results": results};
+    // Limit the results
+	var resultsObj = {"results": results.splice(0,50)};
     res.json(resultsObj);
 });
 
