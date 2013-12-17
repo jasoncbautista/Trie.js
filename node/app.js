@@ -15,15 +15,24 @@ var quotes = [
 ];
 
 
-
+// example:
+// http://localhost:4730/quote/1
 app.get('/quote/:id', function(req, res) {
-      if(quotes.length <= req.params.id || req.params.id < 0) {
-              res.statusCode = 404;
-                  return res.send('Error 404: No quote found');
-                    }
+    if(quotes.length <= req.params.id || req.params.id < 0) {
+        res.statusCode = 404;
+        return res.send('Error 404: No quote found');
+    }
 
-                      var q = quotes[req.params.id];
-                        res.json(q);
+    var q = quotes[req.params.id];
+    res.json(q);
+});
+
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+
+
+app.get('/about', function (req, res) {
+            res.render('index.html');
 });
 
 
