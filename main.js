@@ -13,6 +13,24 @@ _.each(fullList.fighters, function(fighter) {
 
 });
 
+var warmUpCacheWithList= function(list) {
+    _.each(list , function(fighter) {
+        // Insert firt name:
+        fighter.full_name = fighter.first_name + " " + fighter.last_name;
+        fighter.full_name_backwards =   fighter.last_name +  " " + fighter.first_name;
+        trie.insert(fighter.first_name.toLowerCase(), fighter);
+        trie.insert(fighter.last_name.toLowerCase(), fighter);
+        trie.insert(fighter.full_name.toLowerCase(), fighter);
+        trie.insert(fighter.full_name_backwards.toLowerCase(), fighter);
+    });
+};
+
+warmUpCacheWithList(sports['nba']);
+warmUpCacheWithList(sports['mlb']);
+warmUpCacheWithList(sports['nfl']);
+
+
+// Total players = 5800 * 4
 
 console.log("results ", trie.lookup("o"));
 
@@ -50,7 +68,7 @@ $(document).ready(function(){
             results = trie.lookup(searchTerm.toLowerCase());
 
         } else {
-            // results = trie.getAllResults();
+             results = [];
         }
 
         render(results, resultsContainer);
