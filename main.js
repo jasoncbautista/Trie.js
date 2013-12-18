@@ -2,6 +2,7 @@
 //
 var trie = new Trie();
 
+/*
 _.each(fullList.fighters, function(fighter) {
     // Insert firt name:
     fighter.full_name = fighter.first_name + " " + fighter.last_name;
@@ -11,7 +12,7 @@ _.each(fullList.fighters, function(fighter) {
     trie.insert(fighter.full_name.toLowerCase(), fighter);
 
 
-});
+}); */
 
 var warmUpCacheWithList= function(list) {
     _.each(list , function(fighter) {
@@ -51,6 +52,14 @@ $(document).ready(function(){
         // Render our results:
         _.each(results, function(result ) {
             var dom = $("<div>" + result.full_name + "</div>");
+
+            dom.click(function(){
+                //console.log("result", result)
+                var base = "http://dev.sqor.com/athlete/"
+                var url = base + result.id + "/" + 
+                encodeURIComponent(result.first_name + "-" + result.last_name);
+                window.location.href = url;
+            });
             console.log(dom.html());
             resultsContainer.append(dom);
         });
