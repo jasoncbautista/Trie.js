@@ -24,7 +24,7 @@ var warmUpCacheWithList= function(list) {
         trie.insert(fighter.full_name_backwards.toLowerCase(), fighter);
     });
 };
-
+var sports = s;
 warmUpCacheWithList(sports['nba']);
 warmUpCacheWithList(sports['mlb']);
 warmUpCacheWithList(sports['nfl']);
@@ -71,7 +71,7 @@ $(document).ready(function(){
              results = [];
         }
 
-        render(results, resultsContainer);
+        render(results.slice(0,8), resultsContainer);
 
     });
 
