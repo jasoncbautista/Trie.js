@@ -118,7 +118,6 @@ Trie.prototype.getAllResults = function(currentNode){
 }
 
 Trie.prototype.lookup = function(prefix) {
-    //console.log('prefix', prefix);
     if (prefix.length === 0 || prefix == " "){
         return [];
     }
@@ -129,7 +128,6 @@ Trie.prototype.lookup = function(prefix) {
 
 
 Trie.prototype.debug= function(){
-    //console.log(this._head);
 }
 
 
@@ -199,10 +197,7 @@ app.get('/quote/:query', function(req, res) {
 	}
     // Limit the results
 	var resultsObj = {"results": results.splice(0,50)};
-    console.log(new Date().getTime() - starttime);
     res.json(resultsObj);
-    console.log(new Date().getTime() - starttime);
-    console.log('done');
 });
 
 
