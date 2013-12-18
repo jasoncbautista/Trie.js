@@ -118,7 +118,7 @@ Trie.prototype.getAllResults = function(currentNode){
 }
 
 Trie.prototype.lookup = function(prefix) {
-    console.log('prefix', prefix);
+    //console.log('prefix', prefix);
     if (prefix.length === 0 || prefix == " "){
         return [];
     }
@@ -129,7 +129,7 @@ Trie.prototype.lookup = function(prefix) {
 
 
 Trie.prototype.debug= function(){
-    console.log(this._head);
+    //console.log(this._head);
 }
 
 
@@ -188,10 +188,8 @@ warmUpCacheWithList(sports['nfl']);
 // example:
 // http://localhost:4730/quote/1
 app.get('/quote/:query', function(req, res) {
-    var query = req.params.query; 
-
-   	
-
+   var starttime = new Date().getTime();
+   var query = req.params.query;
    var 	searchTerm = query .trim();
 	if (searchTerm.length > 0) {
 	    results = trie.lookup(searchTerm.toLowerCase());
@@ -201,7 +199,10 @@ app.get('/quote/:query', function(req, res) {
 	}
     // Limit the results
 	var resultsObj = {"results": results.splice(0,50)};
+    console.log(new Date().getTime() - starttime);
     res.json(resultsObj);
+    console.log(new Date().getTime() - starttime);
+    console.log('done');
 });
 
 
