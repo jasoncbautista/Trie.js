@@ -185,7 +185,7 @@ warmUpCacheWithList(sports['nfl']);
 
 // example:
 // http://localhost:4730/quote/1
-app.get('/quote/:query', function(req, res) {
+app.get('/rest/search/:query', function(req, res) {
    var starttime = new Date().getTime();
    var query = req.params.query;
    var 	searchTerm = query .trim();
